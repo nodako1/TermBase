@@ -13,7 +13,7 @@ from termbase.testsupport import load_storyboard_fixture
 
 
 def test_prompts_include_stability_constraints() -> None:
-    config = load_config(Path("config/project.json"), Path("config/project.schema.json"))
+    config = load_config(Path("config/project.sample.json"), Path("config/project.schema.json"))
     references = validate_character_references(Path("assets/character_refs"))
 
     system_prompt = _build_system_prompt(config)
@@ -33,7 +33,7 @@ def test_prompts_include_stability_constraints() -> None:
 
 
 def test_storyboard_quality_validation_accepts_stable_fixture() -> None:
-    config = load_config(Path("config/project.json"), Path("config/project.schema.json"))
+    config = load_config(Path("config/project.sample.json"), Path("config/project.schema.json"))
     storyboard = load_storyboard_fixture()
     config.term = storyboard.term
 
@@ -41,7 +41,7 @@ def test_storyboard_quality_validation_accepts_stable_fixture() -> None:
 
 
 def test_repair_prompt_mentions_validation_failure_and_metaphor() -> None:
-    config = load_config(Path("config/project.json"), Path("config/project.schema.json"))
+    config = load_config(Path("config/project.sample.json"), Path("config/project.schema.json"))
     repair_prompt = _build_repair_prompt(
         config,
         previous_payload={"summary": "x", "scenes": []},
@@ -54,7 +54,7 @@ def test_repair_prompt_mentions_validation_failure_and_metaphor() -> None:
 
 
 def test_build_storyboard_messages_returns_system_and_user_messages() -> None:
-    config = load_config(Path("config/project.json"), Path("config/project.schema.json"))
+    config = load_config(Path("config/project.sample.json"), Path("config/project.schema.json"))
     references = validate_character_references(Path("assets/character_refs"))
 
     messages = build_storyboard_messages(config, references)

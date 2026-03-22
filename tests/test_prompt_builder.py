@@ -8,7 +8,7 @@ from termbase.testsupport import load_storyboard_fixture
 
 
 def test_build_image_prompts_creates_one_prompt_per_scene() -> None:
-    config = load_config(Path("config/project.json"), Path("config/project.schema.json"))
+    config = load_config(Path("config/project.sample.json"), Path("config/project.schema.json"))
     config.image_prompt_use_llm = False
     references = validate_character_references(Path("assets/character_refs"))
     storyboard = load_storyboard_fixture()

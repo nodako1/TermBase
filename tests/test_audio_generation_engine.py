@@ -39,11 +39,12 @@ def test_build_ssml_inserts_breaks_and_role_tuning() -> None:
 
 
 def test_generate_audio_writes_scene_audio_files(tmp_path: Path) -> None:
-    config = load_config(Path("config/project.json"), Path("config/project.schema.json"))
+    config = load_config(Path("config/project.sample.json"), Path("config/project.schema.json"))
+    config = config.model_copy(update={"voice_backend": "google-cloud-tts"})
     storyboard = load_storyboard_fixture()
-    storyboard.scenes[0].narration = "DNSって、名前だけで届くんですか？"
-    storyboard.scenes[0].speech_bubble_text = "名前だけで届くんすか？"
-    storyboard.scenes[0].subtitle = "DNSって、名前だけで届くんですか？"
+    storyboard.scenes[0].narration = "GET / POST って、なんで2種類もあるんですか？"
+    storyboard.scenes[0].speech_bubble_text = "なんで2種類あるんすか？"
+    storyboard.scenes[0].subtitle = "GET / POST って、なんで2種類もあるんですか？"
     client = StubGoogleCloudTTSClient()
 
     assets = generate_audio(config, storyboard, tmp_path, client=client)

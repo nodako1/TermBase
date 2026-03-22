@@ -30,13 +30,13 @@ def test_load_sample_config() -> None:
     assert config.google_tts_language_code == "ja-JP"
     assert config.google_tts_audio_encoding == "mp3"
     assert config.google_tts_use_ssml is True
-    assert config.google_tts_voice_tunings.teacher.speaking_rate == 1.1
-    assert config.google_tts_voice_tunings.student.pitch_semitones == 1.5
-    assert config.google_tts_voice_tunings.teacher.sentence_break_ms == 340
-    assert config.google_tts_voice_tunings.student.question_pitch_delta_semitones == 0.4
-    assert config.google_tts_section_speaking_rates.opening.teacher == 1.15
-    assert "日本人女性教師" in config.character_design_profiles.teacher
-    assert "日本人学生" in config.character_design_profiles.student
+    assert config.google_tts_voice_tunings.teacher.speaking_rate == 1.04
+    assert config.google_tts_voice_tunings.student.pitch_semitones == 2.6
+    assert config.google_tts_voice_tunings.teacher.sentence_break_ms == 360
+    assert config.google_tts_voice_tunings.student.question_pitch_delta_semitones == 0.8
+    assert config.google_tts_section_speaking_rates.opening.teacher == 1.08
+    assert "日本人女性" in config.character_design_profiles.teacher
+    assert "後輩" in config.character_design_profiles.student
 
 
 def test_load_legacy_catchphrase_config() -> None:

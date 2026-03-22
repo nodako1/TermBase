@@ -1,10 +1,11 @@
 from pathlib import Path
 
 from termbase.config import load_config
+from termbase.testsupport import load_test_config
 
 
 def test_load_sample_config() -> None:
-    config = load_config(Path("config/project.sample.json"), Path("config/project.schema.json"))
+    config = load_test_config("config/project.sample.json")
 
     assert config.term == "DNS"
     assert config.character_reference_root_dir.is_absolute()
@@ -40,7 +41,7 @@ def test_load_sample_config() -> None:
 
 
 def test_load_legacy_catchphrase_config() -> None:
-    config = load_config(Path("tests/fixtures/legacy_catchphrase_config.json"), Path("config/project.schema.json"))
+    config = load_test_config("tests/fixtures/legacy_catchphrase_config.json")
 
     assert "DNS" in config.opening_template
     assert "{term}" in config.ending_template

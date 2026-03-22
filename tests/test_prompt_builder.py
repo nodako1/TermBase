@@ -1,14 +1,13 @@
 from pathlib import Path
 
-from termbase.config import load_config
 from termbase.services.character_reference_manager import validate_character_references
 from termbase.services.prompt_builder import PROMPT_STRATEGY_VERSION, build_image_prompts
 from termbase.services.scenario_engine import _validate_storyboard_quality
-from termbase.testsupport import load_storyboard_fixture
+from termbase.testsupport import load_storyboard_fixture, load_test_config
 
 
 def test_build_image_prompts_creates_one_prompt_per_scene() -> None:
-    config = load_config(Path("config/project.json"), Path("config/project.schema.json"))
+    config = load_test_config("config/project.json")
     config.image_prompt_use_llm = False
     references = validate_character_references(Path("assets/character_refs"))
     storyboard = load_storyboard_fixture()

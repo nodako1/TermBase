@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: TermBase README
+    url: https://github.com/nodako1/TermBase/blob/main/README.md
+    about: 使い方や Codespaces の手順は README を参照してください

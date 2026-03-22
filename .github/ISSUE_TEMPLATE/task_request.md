@@ -1,31 +1,32 @@
 ---
-name: Task request
-about: Ask for a concrete development change in TermBase
+name: 作業依頼
+about: TermBase に対する具体的な開発依頼を書く
 title: "[Task] "
 labels: [task]
 assignees: []
 ---
 
-## Goal
+## やりたいこと
 
-What do you want to change?
+何を変えたいかを書いてください。
 
-## Why
+## 背景
 
-Why is this needed?
+なぜ必要かを書いてください。
 
-## Scope
+## 対象範囲
 
-- Affected area:
-- Important files, if known:
-- Related run, if any:
+- 変更したい領域:
+- 関連ファイルが分かれば:
+- 関連 run があれば:
 
-## Acceptance Criteria
+## 完了条件
 
 - [ ]
 - [ ]
 - [ ]
 
-## Notes
+## 補足
 
-Extra context, examples, screenshots, or prompt text.
+追加の背景、例、スクリーンショット、プロンプト文面など。
+

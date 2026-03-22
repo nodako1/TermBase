@@ -1,0 +1,27 @@
+{
+  "term": "DNS",
+  "character_reference_root_dir": "./assets/character_refs",
+  "catchphrase": "DNSを簡単に説明するとどうなるのでしょうか。",
+  "ending_template": "{term}の説明、できるようになりましたか？ もっと深掘りしたい方はチャンネル登録をして、横向きの解説動画やほかのショート動画もぜひ見てみてください。",
+  "tone": "熱血",
+  "target_duration_sec": 150,
+  "scene_count": 12,
+  "image_aspect_ratio": "9:16",
+  "output_dir": "/Volumes/T7Shield/koichi-home/TermBase/output",
+  "llm_provider": "openai",
+  "llm_model": "gpt-5.4",
+  "llm_temperature": 0.3,
+  "openai_base_url": "https://api.openai.com/v1",
+  "image_backend": "comfyui",
+  "voice_backend": "style-bert-vits2",
+  "voice_models": {
+    "teacher": "teacher_voice_model",
+    "student": "student_voice_model"
+  },
+  "character_design_profiles": {
+    "teacher": "20代後半から30代前半の日本人女性教師。黒髪のセミロングで清潔感のある先生らしい服装。",
+    "student": "20代前半の日本人学生。短めの黒髪でシンプルなカジュアル服。"
+  },
+  "retry_count": 2,
+  "additional_instructions": "legacy compatibility test"
+}

@@ -1,0 +1,2 @@
+[console_scripts]
+termbase = termbase.cli:app

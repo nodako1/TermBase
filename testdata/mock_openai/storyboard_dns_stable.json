@@ -1,0 +1,35 @@
+{
+  "summary": "DNSをネットの電話帳に例えながら、先生と生徒の掛け合いで説明する安定系サンプル。",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "title": "名前だけでは届かない",
+      "speaker_role": "student",
+      "primary_visual_role": "student",
+      "expression": "confused",
+      "narration": "サイト名は分かるのに、どこへつなげばいいのか私にはまだわからないんです。",
+      "subtitle": "サイト名は分かるのに、どこへつなげばいいのか私にはまだわからないんです。",
+      "duration_sec": 10,
+      "visual_summary": "困っている生徒がPC画面を見て首をかしげる。",
+      "emotion_parameters": {
+        "style": "困惑",
+        "intensity": 0.74
+      }
+    },
+    {
+      "scene_id": 2,
+      "title": "先生が問題を整理",
+      "speaker_role": "teacher",
+      "primary_visual_role": "teacher",
+      "expression": "explaining",
+      "narration": "大丈夫。名前と住所がまだ結びついていないだけ、と考えると見えやすいですよ。",
+      "subtitle": "大丈夫。名前と住所がまだ結びついていないだけ、と考えると見えやすいですよ。",
+      "duration_sec": 10,
+      "visual_summary": "先生が落ち着いて問題を整理して見せる。",
+      "emotion_parameters": {
+        "style": "説明",
+        "intensity": 0.52
+      }
+    }
+  ]
+}

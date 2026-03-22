@@ -1,0 +1,33 @@
+{
+  "term": "DNS",
+  "character_reference_root_dir": "./assets/character_refs",
+  "opening_template": "ねえ、{term}の意味を説明してって言われたら、少しドキッとしませんか？ エンジニアなら知っていて当然の言葉ほど、いざ説明しようとすると難しいですよね。では、{term}を簡単に説明するとどうなるのでしょうか。",
+  "ending_template": "{term}の説明、できるようになりましたか？ もっと深掘りしたい方はチャンネル登録をして、横向きの解説動画やほかのショート動画もぜひ見てみてください。",
+  "tone": "熱血",
+  "target_duration_sec": 150,
+  "scene_count": 12,
+  "image_aspect_ratio": "9:16",
+  "output_dir": "/Volumes/T7Shield/koichi-home/TermBase/output",
+  "llm_provider": "openai",
+  "llm_model": "gpt-5.4",
+  "llm_temperature": 0.3,
+  "openai_base_url": "https://api.openai.com/v1",
+  "image_backend": "openai",
+  "openai_image_model": "gpt-image-1",
+  "comfyui_base_url": "http://127.0.0.1:8188",
+  "image_workflow_path": "./config/comfyui_workflow.sample.json",
+  "comfyui_checkpoint_name": "sd_xl_base_1.0.safetensors",
+  "comfyui_steps": 20,
+  "comfyui_cfg_scale": 6.5,
+  "comfyui_timeout_sec": 600,
+  "comfyui_poll_interval_sec": 2,
+  "image_width": 832,
+  "image_height": 1216,
+  "voice_backend": "style-bert-vits2",
+  "voice_models": {
+    "teacher": "teacher_voice_model",
+    "student": "student_voice_model"
+  },
+  "retry_count": 2,
+  "additional_instructions": "DNSを初心者向けに説明する。電話帳の例えを必ず使い、先生と生徒の掛け合いを明確にする。"
+}

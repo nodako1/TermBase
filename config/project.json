@@ -1,0 +1,74 @@
+{
+  "term": "HTTP / HTTPS",
+  "character_reference_root_dir": "../assets/character_refs",
+  "opening_template": "ねえ、{term}の違いを説明してって言われたら、少しドキッとしませんか？ このチャンネルではエンジニア1〜3年目で必要な知識を短く整理していきます。では、{term}を簡単に説明するとどうなるのでしょうか。",
+  "ending_template": "{term}の違い、説明できるようになりましたか？ もっと深掘りしたい方はチャンネル登録をして、横向きの解説動画やほかのショート動画もぜひ見てみてください。",
+  "tone": "頼れる先輩と元気な後輩",
+  "target_duration_sec": 150,
+  "scene_count": 12,
+  "image_aspect_ratio": "9:16",
+  "output_dir": "/Volumes/T7Shield/koichi-home/TermBase/output",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-pro-preview",
+  "llm_temperature": 0.3,
+  "openai_base_url": "https://api.openai.com/v1",
+  "image_prompt_use_llm": true,
+  "image_backend": "gemini",
+  "openai_image_model": "gpt-image-1",
+  "gemini_base_url": "https://generativelanguage.googleapis.com/v1beta",
+  "gemini_image_model": "gemini-3-pro-image-preview",
+  "imagen_model": "imagen-3.0-generate-002",
+  "comfyui_base_url": "http://127.0.0.1:8188",
+  "image_workflow_path": "./comfyui_workflow.sample.json",
+  "comfyui_checkpoint_name": "sd_xl_base_1.0.safetensors",
+  "comfyui_steps": 20,
+  "comfyui_cfg_scale": 6.5,
+  "comfyui_timeout_sec": 600,
+  "comfyui_poll_interval_sec": 2,
+  "image_width": 832,
+  "image_height": 1216,
+  "voice_backend": "google-cloud-tts",
+  "voice_models": {
+    "teacher": "ja-JP-Neural2-B",
+    "student": "ja-JP-Neural2-C"
+  },
+  "google_application_credentials_path": "../secrets/google-cloud/tts/service-account.json",
+  "google_tts_language_code": "ja-JP",
+  "google_tts_audio_encoding": "mp3",
+  "google_tts_speaking_rate": 1.0,
+  "google_tts_use_ssml": true,
+  "google_tts_voice_tunings": {
+    "teacher": {
+      "speaking_rate": 1.04,
+      "pitch_semitones": 1.2,
+      "sentence_break_ms": 360,
+      "question_break_ms": 540,
+      "comma_break_ms": 210,
+      "question_pitch_delta_semitones": 0.0
+    },
+    "student": {
+      "speaking_rate": 1.08,
+      "pitch_semitones": 2.6,
+      "sentence_break_ms": 220,
+      "question_break_ms": 380,
+      "comma_break_ms": 130,
+      "question_pitch_delta_semitones": 0.8
+    }
+  },
+  "google_tts_section_speaking_rates": {
+    "opening": {
+      "teacher": 1.08,
+      "student": 1.12
+    },
+    "ending": {
+      "teacher": 1.0,
+      "student": 1.02
+    }
+  },
+  "character_design_profiles": {
+    "teacher": "20代後半から30代前半の日本人女性。頼れる上司や先輩に見える落ち着いた知性と包容力。黒髪のセミロングで清潔感があり、目元は優しいが判断力の強さが伝わる。オフィスカジュアル寄りで、白やベージュのトップスにネイビーやグレーのジャケットまたはカーディガン。上品で親しみやすく、仕事ができる印象。",
+    "student": "20代前半の日本人の若手社員またはインターン。少しやんちゃで頼りないが憎めない、素直でリアクション豊かな後輩。ダークブラウンから黒系の短めの髪で、少しラフな前髪。カジュアル寄りのオフィス服やパーカー混じりの軽い服装。表情がころころ変わり、教わると元気よく納得する可愛げがある。"
+  },
+  "retry_count": 2,
+  "additional_instructions": "初学者向けに、HTTPとHTTPSの違いと使い分けを比喩を交えて説明する。HTTPSの暗号化と証明書の意味を、実務の感覚が出るように短く整理する。冒頭2シーンのどこかで、用語を必ず文字通り『HTTP / HTTPS』と表記する。各シーンでは narration を音声で流す説明文、speech_bubble_text を画像の吹き出しに入れる短いセリフとして明確に分けること。speech_bubble_text は漫画の一コマらしい短さで、簡潔で感情が伝わるひと言にすること。teacher は一般的な日本人女性の頼れる上司・先輩として、落ち着いて有能で親しみやすい話し方にすること。言葉選びは自然な現代日本語で、無理な熱血口調や強すぎる命令調は避けること。student は少しやんちゃで普段は頼りないが、教わると『なるほど！』と元気よく反応できる可愛い後輩として描くこと。"
+}

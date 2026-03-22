@@ -76,6 +76,7 @@ def test_write_script_outputs_keeps_latest_five_runs(tmp_path: Path) -> None:
                     "primary_visual_role": "teacher",
                     "expression": "explaining",
                     "narration": "narration",
+                    "speech_bubble_text": "ひとこと要約",
                     "subtitle": "subtitle",
                     "duration_sec": 10,
                     "visual_summary": "visual",

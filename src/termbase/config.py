@@ -55,12 +55,7 @@ def _resolve_config_path(path_value: Path, config_path: Path) -> Path:
     return (config_path.parent / expanded).resolve(strict=False)
 
 
-def load_config(
-    config_path: Path,
-    schema_path: Path,
-    *,
-    require_existing_credentials_path: bool = True,
-) -> AppConfig:
+def load_config(config_path: Path, schema_path: Path) -> AppConfig:
     config_path = config_path.expanduser().resolve(strict=False)
     raw_data = _normalize_legacy_fields(load_json(config_path))
     validate_against_schema(raw_data, schema_path)
@@ -83,17 +78,17 @@ def load_config(
         config.image_workflow_path = _resolve_config_path(config.image_workflow_path, config_path)
         if not config.image_workflow_path.exists():
             raise ConfigValidationError(f"image_workflow_path not found: {config.image_workflow_path}")
-    if config.voice_backend == "google-cloud-tts" and not config.google_application_credentials_path:
-        raise ConfigValidationError("google_application_credentials_path is required for google-cloud-tts")
     if config.google_application_credentials_path:
         config.google_application_credentials_path = _resolve_config_path(
             config.google_application_credentials_path,
             config_path,
         )
-        if require_existing_credentials_path and not config.google_application_credentials_path.exists():
+        if not config.google_application_credentials_path.exists():
             raise ConfigValidationError(
                 f"google_application_credentials_path not found: {config.google_application_credentials_path}"
             )
+    if config.voice_backend == "google-cloud-tts" and not config.google_application_credentials_path:
+        raise ConfigValidationError("google_application_credentials_path is required for google-cloud-tts")
     if config.overlay_font_path:
         config.overlay_font_path = _resolve_config_path(config.overlay_font_path, config_path)
         if not config.overlay_font_path.exists():

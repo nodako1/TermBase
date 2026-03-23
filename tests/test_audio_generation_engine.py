@@ -1,7 +1,8 @@
 from pathlib import Path
 
+from termbase.config import load_config
 from termbase.services.audio_generation_engine import _build_ssml, generate_audio
-from termbase.testsupport import load_storyboard_fixture, load_test_config
+from termbase.testsupport import load_storyboard_fixture
 
 
 class StubGoogleCloudTTSClient:
@@ -38,11 +39,11 @@ def test_build_ssml_inserts_breaks_and_role_tuning() -> None:
 
 
 def test_generate_audio_writes_scene_audio_files(tmp_path: Path) -> None:
-    config = load_test_config("config/project.json")
+    config = load_config(Path("config/project.json"), Path("config/project.schema.json"))
     storyboard = load_storyboard_fixture()
-    storyboard.scenes[0].narration = "GET / POST って、なんで2種類もあるんですか？"
-    storyboard.scenes[0].speech_bubble_text = "なんで2種類あるんすか？"
-    storyboard.scenes[0].subtitle = "GET / POST って、なんで2種類もあるんですか？"
+    storyboard.scenes[0].narration = "DNSって、名前だけで届くんですか？"
+    storyboard.scenes[0].speech_bubble_text = "名前だけで届くんすか？"
+    storyboard.scenes[0].subtitle = "DNSって、名前だけで届くんですか？"
     client = StubGoogleCloudTTSClient()
 
     assets = generate_audio(config, storyboard, tmp_path, client=client)

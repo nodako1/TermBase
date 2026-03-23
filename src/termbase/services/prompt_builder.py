@@ -9,7 +9,7 @@ from termbase.models import AppConfig, CharacterReferenceSet, GraphOverlayPlan, 
 from termbase.services.llm_provider import create_json_llm_client
 
 
-PROMPT_STRATEGY_VERSION = "image-prompt-v6"
+PROMPT_STRATEGY_VERSION = "image-prompt-v5"
 
 NEGATIVE_PROMPT = (
     "low quality, blurry, muddy colors, noisy shading, overexposed, underexposed, weak composition, flat lighting, "
@@ -20,14 +20,7 @@ NEGATIVE_PROMPT = (
 
 STYLE_REQUIREMENTS = (
     "Premium manga-inspired educational key visual, single-panel vertical composition, crisp line art, polished cel shading, "
-    "clear smartphone readability, strong focal hierarchy, expressive face acting, stable anatomy, intentional negative space, "
-    "clean background separation, saturated manga color palette with vibrant accent colors, "
-    "soft front-key lighting with gentle rim highlight for depth, consistent character identity across all frames."
-)
-
-LIGHTING_REQUIREMENTS = (
-    "Lighting: soft diffused front-key light with a gentle warm rim highlight. Avoid flat box lighting. "
-    "Use directional warmth that creates depth without dark shadows cluttering the background."
+    "clear smartphone readability, strong focal hierarchy, expressive face acting, stable anatomy, intentional negative space, and clean background separation."
 )
 
 IN_IMAGE_TEXT_POLICY = (
@@ -219,7 +212,6 @@ def _build_default_positive_prompt(scene, composition_notes: str, config: AppCon
     return (
         f"Prompt strategy: {PROMPT_STRATEGY_VERSION}.\n"
         f"Style requirements: {STYLE_REQUIREMENTS}\n"
-        f"Lighting requirements: {LIGHTING_REQUIREMENTS}\n"
         f"Scene goal: main role is {scene.primary_visual_role}; speaker role is {scene.speaker_role}.\n"
         f"Emotion target: {scene.emotion_parameters.style}. Expression target: {scene.expression}.\n"
         f"Scene summary: {scene.visual_summary}\n"
@@ -230,7 +222,7 @@ def _build_default_positive_prompt(scene, composition_notes: str, config: AppCon
         f"In-image layout notes: {overlay_layout_notes}\n"
         f"Character design notes: {_build_character_design_notes(config, scene.primary_visual_role, support_role)}\n"
         f"Character consistency: {_build_character_consistency_rules(scene.primary_visual_role, support_role, scene.expression)}\n"
-        "Quality requirements: clean medium shot or bust shot, strong focal point, readable pose, clean hands, clear silhouette, readable overlays, premium composition, no bleed between text and illustration."
+        "Quality requirements: clean medium shot or bust shot, strong focal point, readable pose, clean hands, clear silhouette, readable overlays, and premium composition."
     )
 
 
@@ -282,7 +274,6 @@ def _build_prompt_planner_messages(config: AppConfig, storyboard: Storyboard) ->
         "Keep the scene visually simple, readable on a smartphone, and faithful to the script. "
         "Treat narration as audio-only context and speech_bubble_text as the only source for in-image speech bubble wording. "
         "Preserve exact Japanese speech bubble text. If a graph is useful, keep it minimal and readable. "
-        "Every positive_prompt must specify: shot type, framing, lighting direction, color palette, expression, and in-image text placement. "
         "Do not mention file paths, JSON, or meta commentary inside positive_prompt."
     )
     user_prompt = json.dumps(
@@ -297,9 +288,7 @@ def _build_prompt_planner_messages(config: AppConfig, storyboard: Storyboard) ->
             "scenes": scene_briefs,
             "requirements": [
                 "positive_prompt must be English and optimized for a premium single-panel vertical illustration",
-                "positive_prompt must explicitly state shot type, framing, focal hierarchy, lighting direction, color palette, expression, and in-image text integration",
-                "positive_prompt must include a lighting instruction: soft front-key light with gentle rim highlight, avoiding flat box lighting",
-                "positive_prompt must include a color palette instruction: saturated manga palette with vibrant accent colors",
+                "positive_prompt must explicitly state shot type, framing, focal hierarchy, lighting, expression, and in-image text integration",
                 "narration is longer spoken dialogue for audio and must not be mistaken for in-image text",
                 "speech_bubble.text must preserve the exact Japanese speech_bubble_text wording or a trimmed equivalent already provided",
                 "graph_overlay should be null when a graph would add clutter",

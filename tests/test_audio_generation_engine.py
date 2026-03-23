@@ -1,8 +1,7 @@
 from pathlib import Path
 
-from termbase.config import load_config
 from termbase.services.audio_generation_engine import _build_ssml, generate_audio
-from termbase.testsupport import load_storyboard_fixture
+from termbase.testsupport import load_storyboard_fixture, load_test_config
 
 
 class StubGoogleCloudTTSClient:
@@ -39,8 +38,7 @@ def test_build_ssml_inserts_breaks_and_role_tuning() -> None:
 
 
 def test_generate_audio_writes_scene_audio_files(tmp_path: Path) -> None:
-    config = load_config(Path("config/project.sample.json"), Path("config/project.schema.json"))
-    config = config.model_copy(update={"voice_backend": "google-cloud-tts"})
+    config = load_test_config("config/project.json")
     storyboard = load_storyboard_fixture()
     storyboard.scenes[0].narration = "GET / POST って、なんで2種類もあるんですか？"
     storyboard.scenes[0].speech_bubble_text = "なんで2種類あるんすか？"

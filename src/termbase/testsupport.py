@@ -1,4 +1,17 @@
-from termbase.models import Storyboard
+from __future__ import annotations
+
+from pathlib import Path
+
+from termbase.config import load_config
+from termbase.models import AppConfig, Storyboard
+
+
+def load_test_config(config_path: str | Path) -> AppConfig:
+    return load_config(
+        Path(config_path),
+        Path("config/project.schema.json"),
+        require_existing_credentials_path=False,
+    )
 
 
 def load_storyboard_fixture() -> Storyboard:
